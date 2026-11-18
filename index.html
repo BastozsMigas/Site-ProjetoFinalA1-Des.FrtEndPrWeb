@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfólio de Miguel Bastos Pessoa, estudante de Engenharia de Software com foco em back-end, Python e banco de dados.">
+  <title>Miguel Bastos Pessoa | Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo">
+    <div class="container barra">
+      <a class="marca" href="#inicio" aria-label="Miguel Bastos Pessoa, início">
+        <span aria-hidden="true">MBP</span>
+        <small>Portfólio<br>Gama, DF</small>
+      </a>
+      <button id="menu-botao" type="button" aria-controls="menu" aria-expanded="false" hidden>
+        Menu
+      </button>
+      <nav id="menu" aria-label="Navegação principal">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#competencias">Competências</a>
+        <a href="#trajetoria">Trajetória</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="escuro abertura" id="inicio" aria-labelledby="nome">
+      <div class="container grade-abertura">
+        <div>
+          <p class="rotulo">Engenharia de Software</p>
+          <h1 id="nome">Miguel<br>Bastos <em>Pessoa</em></h1>
+          <p>Estudante de Engenharia de Software.<br>Back-end, Python e banco de dados.</p>
+          <a class="botao" href="#contato">Fale comigo ↗</a>
+        </div>
+        <svg class="quadra" viewBox="0 0 400 460" fill="none" aria-hidden="true">
+          <defs>
+            <pattern id="grade" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M20 0H0V20" stroke="currentColor" opacity=".25"/>
+            </pattern>
+          </defs>
+          <rect x="1" y="1" width="398" height="458" fill="url(#grade)" stroke="currentColor"/>
+          <g stroke="currentColor" stroke-width="2">
+            <path d="M32 30H368V430H32ZM32 230H368M152 30V126H248V30M152 430V334H248V430"/>
+            <path d="M66 30V72A134 134 0 0 0 334 72V30M66 430V388A134 134 0 0 1 334 388V430"/>
+            <circle cx="200" cy="126" r="48"/>
+            <circle cx="200" cy="334" r="48"/>
+            <circle cx="200" cy="230" r="58"/>
+          </g>
+          <circle cx="200" cy="230" r="43" fill="#0f4d2e" stroke="#f3efe4"/>
+          <text x="200" y="242" fill="#f3efe4" text-anchor="middle">MBP</text>
+          <circle cx="200" cy="64" r="6" fill="#f26a1b"/>
+          <circle cx="200" cy="396" r="6" fill="#f26a1b"/>
+        </svg>
+      </div>
+    </section>
+
+    <section id="sobre" aria-labelledby="titulo-sobre">
+      <div class="container">
+        <h2 id="titulo-sobre"><span aria-hidden="true">01</span> Sobre</h2>
+        <div class="duas-colunas">
+          <div>
+            <p class="destaque">Da rotina de uma empresa ao código.</p>
+            <p>Estudo Engenharia de Software no UDF Centro Universitário e trabalho como aprendiz na Associação Atlética Banco de Brasília. Lido com processos administrativos, cobrança e análise de números. Uso a programação para entender esses processos e pensar em como melhorá-los.</p>
+            <p>Antes disso, trabalhei com logística na POLLY SERVICE, onde aprendi a importância da organização. Hoje, meu foco é back-end com Python e banco de dados.</p>
+          </div>
+          <dl class="placar">
+            <div><dt>Formatura prevista</dt><dd>2031</dd></div>
+            <div><dt>Experiências de trabalho</dt><dd>02</dd></div>
+            <div><dt>Competências</dt><dd>16</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="escuro" id="competencias" aria-labelledby="titulo-competencias">
+      <div class="container">
+        <h2 id="titulo-competencias"><span aria-hidden="true">02</span> Competências</h2>
+        <div class="filtros" role="group" aria-label="Filtrar competências" hidden>
+          <button type="button" data-filtro="todas" aria-pressed="true">Todas</button>
+          <button type="button" data-filtro="tecnologia" aria-pressed="false">Tecnologia</button>
+          <button type="button" data-filtro="administracao" aria-pressed="false">Administração</button>
+        </div>
+        <div class="duas-colunas">
+          <article data-categoria="tecnologia">
+            <h3>Tecnologia</h3>
+            <ul class="lista">
+              <li>Python</li>
+              <li>C</li>
+              <li>Modelagem de banco de dados</li>
+              <li>Sistemas operacionais</li>
+              <li>Desenvolvimento web</li>
+              <li>Desenvolvimento front-end</li>
+              <li>Análise de dados</li>
+              <li>Análise de dados estatísticos</li>
+              <li>Sistemas de informação computacionais</li>
+            </ul>
+          </article>
+          <article data-categoria="administracao">
+            <h3>Administração</h3>
+            <ul class="lista">
+              <li>Cobrança de contas a receber</li>
+              <li>Atendimento ao cliente</li>
+              <li>Análise financeira</li>
+              <li>Contabilidade</li>
+              <li>Contabilidade financeira</li>
+              <li>Treinamento prático</li>
+              <li>Habilidades analíticas</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="trajetoria" aria-labelledby="titulo-trajetoria">
+      <div class="container">
+        <h2 id="titulo-trajetoria"><span aria-hidden="true">03</span> Trajetória</h2>
+        <ol class="linha-do-tempo">
+          <li>
+            <span class="rotulo">Atual · Trabalho</span>
+            <div>
+              <h3>Associação Atlética Banco de Brasília</h3>
+              <p>Aprendiz em Administração. Apoio processos da associação e desenvolvo habilidades em sistemas operacionais e programação.</p>
+            </div>
+          </li>
+          <li>
+            <span class="rotulo">Em curso · Até 2031</span>
+            <div>
+              <h3>UDF Centro Universitário</h3>
+              <p>Bacharelado em Engenharia de Software, com conclusão prevista para 2031.</p>
+            </div>
+          </li>
+          <li>
+            <span class="rotulo">Anterior · Trabalho</span>
+            <div>
+              <h3>POLLY SERVICE</h3>
+              <p>Auxiliar de Logística. Contribuí para a organização e a eficiência das operações.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="escuro" id="projetos" aria-labelledby="titulo-projetos">
+      <div class="container">
+        <h2 id="titulo-projetos"><span aria-hidden="true">04</span> Projetos</h2>
+        <article class="projeto">
+          <p class="rotulo">Desenvolvimento Front-end para Web</p>
+          <h3>Portfólio pessoal</h3>
+          <p>A página inclui busca de competências, uma linha do tempo e um estudo de caso sobre o desenvolvimento.</p>
+          <ul class="tecnologias" aria-label="Tecnologias do projeto">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+
+
+    <section class="escuro" id="contato" aria-labelledby="titulo-contato">
+      <div class="container">
+        <h2 id="titulo-contato"><span aria-hidden="true">06</span> Contato</h2>
+        <div class="duas-colunas">
+          <div>
+            <p class="destaque">Vamos conversar?</p>
+            <p>Tenho interesse em oportunidades de estágio em desenvolvimento de software, especialmente com back-end, Python e banco de dados.</p>
+            <ul class="tecnologias" id="perfis" hidden></ul>
+          </div>
+          <div>
+            <p id="aviso-contato">Meu e-mail e meus perfis serão adicionados em breve.</p>
+            <form id="formulario" hidden>
+              <label for="nome-contato">Nome</label>
+              <input id="nome-contato" name="nome" autocomplete="name" maxlength="100" required>
+
+              <label for="email-contato">E-mail</label>
+              <input id="email-contato" name="email" type="email" autocomplete="email" maxlength="254" required>
+
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" rows="4" maxlength="1000" required></textarea>
+
+              <button class="botao" type="submit">Abrir no aplicativo de e-mail ↗</button>
+              <p id="status-contato" role="status"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container barra">
+      <span>© <span id="ano">2026</span> Miguel Bastos Pessoa</span>
+      <a href="#inicio">Voltar ao início ↑</a>
+    </div>
+  </footer>
+</body>
+</html>
