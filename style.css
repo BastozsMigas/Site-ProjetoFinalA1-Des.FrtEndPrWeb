@@ -364,3 +364,381 @@ footer {
   html { scroll-behavior: auto; }
   section.entrou h2, .abertura .botao:hover { animation: none; }
 }
+/* Tipografia, espaçamento e cores do portfólio */
+:root {
+  --papel-claro: #faf8f1;
+  --borda-sutil: #c9cec1;
+  --verde-texto: #244d3a;
+  --laranja-escuro: #a94710;
+}
+
+:is(.site-header, .topo) {
+  background: #0b3923;
+  border-color: #47705c;
+}
+
+.marca span, .monogram {
+  border-color: #779984;
+  font: 600 .8rem "JetBrains Mono", monospace;
+}
+
+:is(.hero, .abertura) h1 {
+  font: 700 clamp(2.2rem, 6.1vw, 5.15rem)/1.02 Archivo, Arial, sans-serif;
+  letter-spacing: -.05em;
+  text-transform: none;
+}
+
+:is(.hero, .abertura) h1 em {
+  display: inline;
+  color: inherit;
+}
+
+:is(.hero-grid, .grade-abertura) {
+  gap: clamp(1.5rem, 5vw, 5rem);
+}
+
+:is(.court, .quadra) {
+  max-width: 24rem;
+  color: #85ab96;
+}
+
+:is(.court, .quadra) :is(pattern, text) { opacity: .28; }
+:is(.court, .quadra) circle[fill="#f26a1b" i] { fill: #d9a566; }
+:is(.hero, .abertura) :is(.button, .botao):hover { animation: none; }
+.hero .button > span { display: none; }
+
+main section:not(#inicio, #contato) {
+  padding-block: clamp(3.5rem, 8vw, 7rem);
+}
+
+main :is(h2, .section-title h2) {
+  font: 700 clamp(1.65rem, 4.6vw, 3.65rem)/1.1 Archivo, Arial, sans-serif;
+  letter-spacing: -.04em;
+  text-transform: none;
+}
+
+main section :is(h2, .section-title) > span {
+  color: var(--verde-texto);
+  font: 600 .8rem "JetBrains Mono", monospace;
+}
+
+main section:is(.ativo, .panel.is-active) :is(h2, .section-title) > span {
+  color: var(--laranja-escuro);
+}
+
+#contato :is(h2, .section-title) > span,
+#contato:is(.ativo, .is-active) :is(h2, .section-title) > span {
+  color: #f1c8a8;
+}
+
+:is(.lead, .destaque) {
+  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+}
+
+:is(.scoreboard, .placar) {
+  background: #123a29;
+  border-top: 2px solid #d9a566;
+}
+
+:is(.scoreboard, .placar) dd {
+  font-family: Archivo, Arial, sans-serif;
+  font-weight: 700;
+}
+
+#competencias, #projetos {
+  background: var(--papel-claro);
+  color: #101311;
+}
+
+:is(#competencias, #projetos) :is(h2, .section-title) {
+  border-color: var(--borda-sutil);
+}
+
+:is(#competencias, #projetos) :is(h2, .section-title) > span {
+  color: var(--verde-texto);
+}
+
+:is(#competencias, #projetos):is(.ativo, .is-active) :is(h2, .section-title) > span {
+  color: var(--laranja-escuro);
+}
+
+#competencias :is([data-category], [data-categoria]) {
+  border-top: 2px solid var(--verde-texto);
+}
+
+#competencias :is(.skill-grid, .lista) li {
+  border-color: var(--borda-sutil);
+}
+
+#competencias :is(.filters, .filtros) button {
+  color: var(--verde-texto);
+  border-color: #6b8274;
+}
+
+#competencias :is(.filters, .filtros) button[aria-pressed="true"] {
+  background: #0f4d2e;
+  color: #f3efe4;
+}
+
+#competencias :is(.filters, .filtros) button:focus-visible {
+  outline-color: #0f4d2e;
+}
+
+#projetos article {
+  background: #f3efe4;
+  border: 1px solid var(--borda-sutil);
+  border-left: 3px solid #0f4d2e;
+}
+
+#projetos h3 {
+  font: 700 clamp(1.5rem, 3.2vw, 2.75rem)/1.12 Archivo, Arial, sans-serif;
+  text-transform: none;
+}
+
+#projetos :is(.tags, .tecnologias) li {
+  color: var(--verde-texto);
+  border-color: #92a096;
+}
+
+:is(.ball-art, .bola) {
+  background: #e9eee4;
+  border: 1px solid var(--borda-sutil);
+}
+
+.ball-art svg, svg.bola {
+  padding: clamp(.75rem, 2vw, 1.5rem);
+}
+
+:is(.ball-art, .bola) g {
+  stroke: #355c48;
+  stroke-width: 1.6;
+}
+
+:is(.ball-art, .bola) circle { fill: none; }
+:is(.ball-art > svg, svg.bola) > path { stroke: #97ad9c; }
+/* Busca de competências, estudo de caso e trajetória */
+.controle-portfolio {
+  min-height: 2.75rem;
+  padding: .45rem .8rem;
+  border: 1px solid #6b8274;
+  background: transparent;
+  color: #244d3a;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.controle-portfolio:hover { background: #e9eee4; }
+
+.controle-portfolio:focus-visible,
+#trajetoria summary:focus-visible,
+.estudo-projeto summary:focus-visible {
+  outline: 2px solid #0f4d2e;
+  outline-offset: 4px;
+}
+
+.busca-competencias {
+  max-width: 34rem;
+  margin-bottom: 1rem;
+}
+
+.busca-competencias label {
+  display: block;
+  margin-bottom: .35rem;
+  font-weight: 700;
+}
+
+.busca-controles {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .5rem;
+}
+
+.busca-controles input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: .45rem .7rem;
+  border: 1px solid #6b8274;
+  background: #fffdf7;
+  color: #101311;
+  font: inherit;
+}
+
+#competencias :is(.filters, .filtros) { margin-bottom: .5rem; }
+
+.resultado-competencias {
+  margin: 0 0 1.3rem;
+  color: #244d3a;
+  font-size: .92rem;
+}
+
+@media (min-width: 40rem) {
+  #competencias .skill-grid:has(> article:not([hidden]) + article:not([hidden])) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.abrir-estudo { margin-top: 1rem; }
+
+.estudo-projeto {
+  width: min(calc(100% - 2rem), 42rem);
+  max-height: 85vh;
+  overflow: auto;
+  padding: clamp(1rem, 4vw, 2rem);
+  border: 1px solid #789183;
+  background: #f3efe4;
+  color: #101311;
+}
+
+.estudo-projeto::backdrop { background: rgb(8 28 18 / .72); }
+html:has(.estudo-projeto[open]) { overflow: hidden; }
+
+.estudo-projeto header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-bottom: .9rem;
+}
+
+.estudo-projeto h2 {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: 700 clamp(1.35rem, 3.5vw, 2rem)/1.15 Archivo, Arial, sans-serif;
+  text-transform: none;
+}
+
+.estudo-projeto details {
+  margin-top: 1rem;
+  border-top: 1px solid #c9cec1;
+}
+
+.estudo-projeto summary, #trajetoria summary {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.estudo-projeto summary { padding-block: .65rem; }
+.estudo-projeto details p { padding-inline-start: 1.1rem; }
+#trajetoria summary { padding-block: .15rem; }
+#trajetoria summary::marker { color: #0f4d2e; }
+#trajetoria details p { margin: .4rem 0 0 1.05rem; }
+
+:is(.court, .quadra) {
+  width: min(100%, 18rem);
+  opacity: .5;
+}
+
+:is(.court, .quadra) circle[fill="#f26a1b" i] { fill: currentColor; }
+
+@media (max-width: 39.99rem) {
+  :is(.court, .quadra) { display: none; }
+}
+:root {
+  --noite: #11113e;
+  --luminous-blue: #2f2db5;
+  --sol-da-meia-noite: #ffc76b;
+  --claro: #f7f7fc;
+  --linha-azul: #55548b;
+}
+
+body { background-color: var(--claro); }
+
+:is(.site-header, .topo, .site-footer, footer, #inicio, #contato) {
+  background-color: var(--noite);
+  color: var(--claro);
+  border-color: var(--linha-azul);
+}
+
+:is(.monogram, .marca span, .menu-toggle, #menu-botao, .hero-footer) {
+  border-color: #8180bb;
+}
+
+:is(.monogram, .marca span, nav a:hover, nav a[aria-current]) {
+  color: var(--sol-da-meia-noite);
+}
+
+:is(.hero, .abertura) h1 em { color: inherit; }
+
+.eyebrow span, .abertura .rotulo::before {
+  background-color: var(--sol-da-meia-noite);
+}
+
+.hero-copy > p:not(.eyebrow), .hero-footer { color: #deddf4; }
+
+:is(.primary, .botao) {
+  background-color: var(--sol-da-meia-noite);
+  color: var(--noite);
+}
+
+:is(.primary, .botao):hover { background-color: #ffda99; }
+
+:is(.court, .quadra) { color: #a6a5ff; }
+:is(.court, .quadra) pattern path { stroke: #a6a5ff; }
+:is(.court, .quadra) circle[fill="#0f4d2e" i] { fill: var(--noite); }
+:is(.court, .quadra) circle[fill="#f26a1b" i] { fill: var(--sol-da-meia-noite); }
+
+#competencias, #projetos {
+  background-color: #eeeeff;
+  color: #18182c;
+}
+
+:is(#competencias, #projetos) :is(h2, .section-title) > span,
+#competencias :is(.resultado-competencias, .filters button, .filtros button),
+#projetos :is(.tags, .tecnologias) li,
+#trajetoria :is(.label, .rotulo) {
+  color: var(--luminous-blue);
+}
+
+#competencias :is([data-category], [data-categoria]),
+#projetos article {
+  border-color: var(--luminous-blue);
+}
+
+#competencias :is(.filters, .filtros) button[aria-pressed="true"] {
+  background-color: var(--luminous-blue);
+  color: #fff;
+}
+
+#projetos article {
+  background-color: #fff;
+  color: #18182c;
+}
+
+:is(.placar, .scoreboard) {
+  background-color: var(--noite);
+  border-color: var(--sol-da-meia-noite);
+}
+
+:is(.placar, .scoreboard) dd,
+#contato :is(h2, .section-title) > span {
+  color: var(--sol-da-meia-noite);
+}
+
+#contato :is(input, textarea) {
+  background-color: #20204e;
+  color: #fff;
+}
+
+#contato :is(#aviso-contato, #contact-unavailable) {
+  border-color: var(--sol-da-meia-noite);
+}
+
+.controle-portfolio {
+  color: var(--luminous-blue);
+  border-color: #7776ac;
+}
+
+.controle-portfolio:hover { background-color: #e2e2ff; }
+.estudo-projeto { background-color: var(--claro); }
+.estudo-projeto::backdrop { background-color: #11113ecc; }
+
+:is(#competencias, #projetos, #trajetoria, .estudo-projeto) :focus-visible {
+  outline-color: var(--luminous-blue);
+}
+
+:is(.site-header, .topo, #inicio, #contato) :focus-visible {
+  outline-color: var(--sol-da-meia-noite);
+}
