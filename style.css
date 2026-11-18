@@ -142,7 +142,6 @@ section {
   width: .55rem;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--laranja);
 }
 
 h1 {
@@ -160,17 +159,13 @@ h1 em {
 
 .abertura p:not(.rotulo) { font-size: clamp(1.05rem, 2vw, 1.25rem); }
 
-.quadra, .bola {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
 .quadra {
-  max-width: 27rem;
+  display: block;
+  width: min(100%, 18rem);
+  height: auto;
   margin-inline: auto;
-  color: var(--periquito);
   font: 32px var(--titulo);
+  opacity: .5;
 }
 
 .botao {
@@ -180,19 +175,8 @@ h1 em {
   margin-top: 1rem;
   padding: .55rem 1rem;
   border: 0;
-  background: var(--laranja);
-  color: var(--asfalto);
   font-weight: 700;
   text-decoration: none;
-}
-
-.botao:hover { background: #ff9054; }
-.escuro .botao:focus-visible { outline-color: var(--giz); }
-.abertura .botao:hover { animation: quique .4s ease; }
-
-@keyframes quique {
-  45% { transform: translateY(-6px); }
-  75% { transform: translateY(-2px); }
 }
 
 h2 {
@@ -322,8 +306,6 @@ section.entrou h2 { animation: entrada .45s ease both; }
   border: 1px solid var(--linha-escura);
 }
 
-.bola { background: var(--verde-escuro); }
-
 #aviso-contato {
   padding: .5rem 1rem;
   border-left: 2px solid var(--periquito);
@@ -356,13 +338,12 @@ footer {
 @media (min-width: 40rem) {
   .grade-abertura { grid-template-columns: 1.1fr .9fr; }
   .duas-colunas { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); }
-  .duas-colunas:has(> article[hidden]) { grid-template-columns: 1fr; }
   .linha-do-tempo li { grid-template-columns: 11rem 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  section.entrou h2, .abertura .botao:hover { animation: none; }
+  section.entrou h2 { animation: none; }
 }
 /* Tipografia, espaçamento e cores do portfólio */
 :root {
@@ -372,75 +353,67 @@ footer {
   --laranja-escuro: #a94710;
 }
 
-:is(.site-header, .topo) {
+.topo {
   background: #0b3923;
   border-color: #47705c;
 }
 
-.marca span, .monogram {
+.marca span {
   border-color: #779984;
   font: 600 .8rem "JetBrains Mono", monospace;
 }
 
-:is(.hero, .abertura) h1 {
+.abertura h1 {
   font: 700 clamp(2.2rem, 6.1vw, 5.15rem)/1.02 Archivo, Arial, sans-serif;
   letter-spacing: -.05em;
   text-transform: none;
 }
 
-:is(.hero, .abertura) h1 em {
+.abertura h1 em {
   display: inline;
   color: inherit;
 }
 
-:is(.hero-grid, .grade-abertura) {
+.grade-abertura {
   gap: clamp(1.5rem, 5vw, 5rem);
 }
 
-:is(.court, .quadra) {
-  max-width: 24rem;
-  color: #85ab96;
-}
-
-:is(.court, .quadra) :is(pattern, text) { opacity: .28; }
-:is(.court, .quadra) circle[fill="#f26a1b" i] { fill: #d9a566; }
-:is(.hero, .abertura) :is(.button, .botao):hover { animation: none; }
-.hero .button > span { display: none; }
+.quadra :is(pattern, text) { opacity: .28; }
 
 main section:not(#inicio, #contato) {
   padding-block: clamp(3.5rem, 8vw, 7rem);
 }
 
-main :is(h2, .section-title h2) {
+main h2 {
   font: 700 clamp(1.65rem, 4.6vw, 3.65rem)/1.1 Archivo, Arial, sans-serif;
   letter-spacing: -.04em;
   text-transform: none;
 }
 
-main section :is(h2, .section-title) > span {
+main section h2 > span {
   color: var(--verde-texto);
   font: 600 .8rem "JetBrains Mono", monospace;
 }
 
-main section:is(.ativo, .panel.is-active) :is(h2, .section-title) > span {
+main section.ativo h2 > span {
   color: var(--laranja-escuro);
 }
 
-#contato :is(h2, .section-title) > span,
-#contato:is(.ativo, .is-active) :is(h2, .section-title) > span {
+#contato h2 > span,
+#contato.ativo h2 > span {
   color: #f1c8a8;
 }
 
-:is(.lead, .destaque) {
+.destaque {
   font-size: clamp(1.3rem, 2.4vw, 1.75rem);
 }
 
-:is(.scoreboard, .placar) {
+.placar {
   background: #123a29;
   border-top: 2px solid #d9a566;
 }
 
-:is(.scoreboard, .placar) dd {
+.placar dd {
   font-family: Archivo, Arial, sans-serif;
   font-weight: 700;
 }
@@ -450,37 +423,37 @@ main section:is(.ativo, .panel.is-active) :is(h2, .section-title) > span {
   color: #101311;
 }
 
-:is(#competencias, #projetos) :is(h2, .section-title) {
+#competencias h2, #projetos h2 {
   border-color: var(--borda-sutil);
 }
 
-:is(#competencias, #projetos) :is(h2, .section-title) > span {
+#competencias h2 > span, #projetos h2 > span {
   color: var(--verde-texto);
 }
 
-:is(#competencias, #projetos):is(.ativo, .is-active) :is(h2, .section-title) > span {
+#competencias.ativo h2 > span, #projetos.ativo h2 > span {
   color: var(--laranja-escuro);
 }
 
-#competencias :is([data-category], [data-categoria]) {
+#competencias [data-categoria] {
   border-top: 2px solid var(--verde-texto);
 }
 
-#competencias :is(.skill-grid, .lista) li {
+#competencias .lista li {
   border-color: var(--borda-sutil);
 }
 
-#competencias :is(.filters, .filtros) button {
+#competencias .filtros button {
   color: var(--verde-texto);
   border-color: #6b8274;
 }
 
-#competencias :is(.filters, .filtros) button[aria-pressed="true"] {
+#competencias .filtros button[aria-pressed="true"] {
   background: #0f4d2e;
   color: #f3efe4;
 }
 
-#competencias :is(.filters, .filtros) button:focus-visible {
+#competencias .filtros button:focus-visible {
   outline-color: #0f4d2e;
 }
 
@@ -495,27 +468,11 @@ main section:is(.ativo, .panel.is-active) :is(h2, .section-title) > span {
   text-transform: none;
 }
 
-#projetos :is(.tags, .tecnologias) li {
+#projetos .tecnologias li {
   color: var(--verde-texto);
   border-color: #92a096;
 }
 
-:is(.ball-art, .bola) {
-  background: #e9eee4;
-  border: 1px solid var(--borda-sutil);
-}
-
-.ball-art svg, svg.bola {
-  padding: clamp(.75rem, 2vw, 1.5rem);
-}
-
-:is(.ball-art, .bola) g {
-  stroke: #355c48;
-  stroke-width: 1.6;
-}
-
-:is(.ball-art, .bola) circle { fill: none; }
-:is(.ball-art > svg, svg.bola) > path { stroke: #97ad9c; }
 /* Busca de competências, estudo de caso e trajetória */
 .controle-portfolio {
   min-height: 2.75rem;
@@ -563,18 +520,12 @@ main section:is(.ativo, .panel.is-active) :is(h2, .section-title) > span {
   font: inherit;
 }
 
-#competencias :is(.filters, .filtros) { margin-bottom: .5rem; }
+#competencias .filtros { margin-bottom: .5rem; }
 
 .resultado-competencias {
   margin: 0 0 1.3rem;
   color: #244d3a;
   font-size: .92rem;
-}
-
-@media (min-width: 40rem) {
-  #competencias .skill-grid:has(> article:not([hidden]) + article:not([hidden])) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 .abrir-estudo { margin-top: 1rem; }
@@ -626,15 +577,8 @@ html:has(.estudo-projeto[open]) { overflow: hidden; }
 #trajetoria summary::marker { color: #0f4d2e; }
 #trajetoria details p { margin: .4rem 0 0 1.05rem; }
 
-:is(.court, .quadra) {
-  width: min(100%, 18rem);
-  opacity: .5;
-}
-
-:is(.court, .quadra) circle[fill="#f26a1b" i] { fill: currentColor; }
-
 @media (max-width: 39.99rem) {
-  :is(.court, .quadra) { display: none; }
+  .quadra { display: none; }
 }
 :root {
   --noite: #11113e;
@@ -646,58 +590,55 @@ html:has(.estudo-projeto[open]) { overflow: hidden; }
 
 body { background-color: var(--claro); }
 
-:is(.site-header, .topo, .site-footer, footer, #inicio, #contato) {
+.topo, footer, #inicio, #contato {
   background-color: var(--noite);
   color: var(--claro);
   border-color: var(--linha-azul);
 }
 
-:is(.monogram, .marca span, .menu-toggle, #menu-botao, .hero-footer) {
+.marca span, #menu-botao {
   border-color: #8180bb;
 }
 
-:is(.monogram, .marca span, nav a:hover, nav a[aria-current]) {
+.marca span, nav a:hover, nav a[aria-current] {
   color: var(--sol-da-meia-noite);
 }
 
-:is(.hero, .abertura) h1 em { color: inherit; }
-
-.eyebrow span, .abertura .rotulo::before {
+.abertura .rotulo::before {
   background-color: var(--sol-da-meia-noite);
 }
 
-.hero-copy > p:not(.eyebrow), .hero-footer { color: #deddf4; }
-
-:is(.primary, .botao) {
+.botao {
   background-color: var(--sol-da-meia-noite);
   color: var(--noite);
 }
 
-:is(.primary, .botao):hover { background-color: #ffda99; }
+.botao:hover { background-color: #ffda99; }
 
-:is(.court, .quadra) { color: #a6a5ff; }
-:is(.court, .quadra) pattern path { stroke: #a6a5ff; }
-:is(.court, .quadra) circle[fill="#0f4d2e" i] { fill: var(--noite); }
-:is(.court, .quadra) circle[fill="#f26a1b" i] { fill: var(--sol-da-meia-noite); }
+.quadra { color: #a6a5ff; }
+.quadra pattern path { stroke: #a6a5ff; }
+.quadra circle[fill="#0f4d2e" i] { fill: var(--noite); }
+.quadra circle[fill="#f26a1b" i] { fill: var(--sol-da-meia-noite); }
 
 #competencias, #projetos {
   background-color: #eeeeff;
   color: #18182c;
 }
 
-:is(#competencias, #projetos) :is(h2, .section-title) > span,
-#competencias :is(.resultado-competencias, .filters button, .filtros button),
-#projetos :is(.tags, .tecnologias) li,
-#trajetoria :is(.label, .rotulo) {
+#competencias h2 > span,
+#competencias .resultado-competencias,
+#competencias .filtros button,
+#projetos .tecnologias li,
+#trajetoria .rotulo {
   color: var(--luminous-blue);
 }
 
-#competencias :is([data-category], [data-categoria]),
+#competencias [data-categoria],
 #projetos article {
   border-color: var(--luminous-blue);
 }
 
-#competencias :is(.filters, .filtros) button[aria-pressed="true"] {
+#competencias .filtros button[aria-pressed="true"] {
   background-color: var(--luminous-blue);
   color: #fff;
 }
@@ -707,13 +648,13 @@ body { background-color: var(--claro); }
   color: #18182c;
 }
 
-:is(.placar, .scoreboard) {
+.placar {
   background-color: var(--noite);
   border-color: var(--sol-da-meia-noite);
 }
 
-:is(.placar, .scoreboard) dd,
-#contato :is(h2, .section-title) > span {
+.placar dd,
+#contato h2 > span {
   color: var(--sol-da-meia-noite);
 }
 
@@ -722,7 +663,7 @@ body { background-color: var(--claro); }
   color: #fff;
 }
 
-#contato :is(#aviso-contato, #contact-unavailable) {
+#contato #aviso-contato {
   border-color: var(--sol-da-meia-noite);
 }
 
@@ -735,10 +676,15 @@ body { background-color: var(--claro); }
 .estudo-projeto { background-color: var(--claro); }
 .estudo-projeto::backdrop { background-color: #11113ecc; }
 
-:is(#competencias, #projetos, #trajetoria, .estudo-projeto) :focus-visible {
+#competencias :focus-visible,
+#projetos :focus-visible,
+#trajetoria :focus-visible,
+.estudo-projeto :focus-visible {
   outline-color: var(--luminous-blue);
 }
 
-:is(.site-header, .topo, #inicio, #contato) :focus-visible {
+.topo :focus-visible,
+#inicio :focus-visible,
+#contato :focus-visible {
   outline-color: var(--sol-da-meia-noite);
 }
