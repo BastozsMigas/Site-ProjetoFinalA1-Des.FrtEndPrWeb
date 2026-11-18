@@ -1,8 +1,8 @@
-// Preencha com seus dados reais. Use links completos, começando com https://.
 const contato = {
-  email: "",
-  linkedin: "",
+  email: "mmig795@gmail.com",
+  linkedin: "https://www.linkedin.com/in/miguel-bastos-pessoa-569130440?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   github: "",
+  instagram: "https://www.instagram.com/temp_migas?knvt=bG51Z2RhdHlrb2Rv",
 };
 
 const menu = document.querySelector("#menu");
@@ -134,7 +134,6 @@ function adicionarLink(texto, destino) {
 }
 
 for (const [nome, endereco] of [
-  ["LinkedIn", contato.linkedin],
   ["GitHub", contato.github],
 ]) {
   const link = endereco.trim();
@@ -144,8 +143,6 @@ for (const [nome, endereco] of [
 }
 
 if (emailValido) {
-  adicionarLink("E-mail", "mailto:" + email);
-  aviso.hidden = true;
   formulario.hidden = false;
 } else if (!perfis.hidden) {
   aviso.textContent = "Entre em contato pelos perfis disponíveis.";
@@ -178,3 +175,130 @@ formulario.addEventListener("submit", (evento) => {
 });
 
 document.querySelector("#ano").textContent = new Date().getFullYear();
+// Busca por texto combinada com o filtro por categoria.
+(() => {
+  const filtros = document.querySelector("#competencias :is(.filters, .filtros)");
+  const normalizar = (texto) => texto.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
+  const grupos = [...document.querySelectorAll("#competencias :is([data-category], [data-categoria])")]
+    .map((grupo) => ({
+      elemento: grupo,
+      categoria: grupo.dataset.category ?? grupo.dataset.categoria,
+      itens: [...grupo.querySelectorAll("li")].map((item) => ({
+        elemento: item,
+        texto: normalizar(item.textContent),
+      })),
+    }));
+
+  filtros.insertAdjacentHTML("beforebegin", `
+    <div class="busca-competencias">
+      <label for="busca-competencia">Buscar competência</label>
+      <div class="busca-controles">
+        <input id="busca-competencia" type="search" placeholder="Ex.: Python ou análise" autocomplete="off">
+        <button class="controle-portfolio" id="limpar-busca" type="button" hidden>Limpar</button>
+      </div>
+    </div>
+  `);
+  filtros.insertAdjacentHTML("afterend", `
+    <p class="resultado-competencias" id="resultado-competencias" role="status"></p>
+  `);
+
+  const busca = document.querySelector("#busca-competencia");
+  const limpar = document.querySelector("#limpar-busca");
+  const resultado = document.querySelector("#resultado-competencias");
+
+  function atualizarBusca() {
+    const selecionado = filtros.querySelector('[aria-pressed="true"]');
+    const categoria = selecionado.dataset.filter ?? selecionado.dataset.filtro;
+    const termos = normalizar(busca.value).trim().split(/\s+/).filter(Boolean);
+    let total = 0;
+
+    for (const grupo of grupos) {
+      const categoriaVisivel = categoria === "todas" || categoria === grupo.categoria;
+      let visiveis = 0;
+
+      for (const item of grupo.itens) {
+        const corresponde = categoriaVisivel && termos.every((termo) => item.texto.includes(termo));
+        item.elemento.hidden = !corresponde;
+        visiveis += Number(corresponde);
+      }
+
+      grupo.elemento.hidden = visiveis === 0;
+      total += visiveis;
+    }
+
+    limpar.hidden = busca.value === "";
+    resultado.textContent = total === 0
+      ? "Nenhuma competência encontrada. Tente outro termo ou categoria."
+      : total + (total === 1 ? " competência encontrada" : " competências encontradas");
+  }
+
+  busca.addEventListener("input", atualizarBusca);
+  filtros.addEventListener("click", atualizarBusca);
+
+  limpar.addEventListener("click", () => {
+    busca.value = "";
+    busca.focus();
+    atualizarBusca();
+  });
+
+  atualizarBusca();
+})();
+
+// Estudo de caso com detalhes sobre as três tecnologias do projeto.
+(() => {
+  const projeto = document.querySelector("#projetos article");
+
+  projeto.insertAdjacentHTML("beforeend", `
+    <button class="controle-portfolio abrir-estudo" type="button" aria-haspopup="dialog">
+      Explorar o projeto
+    </button>
+  `);
+
+  document.body.insertAdjacentHTML("beforeend", `
+    <dialog class="estudo-projeto" aria-labelledby="titulo-estudo">
+      <header>
+        <h2 id="titulo-estudo">Como construí este portfólio</h2>
+        <form method="dialog">
+          <button class="controle-portfolio" type="submit" autofocus>Fechar</button>
+        </form>
+      </header>
+      <p>O objetivo era apresentar minha formação e minha experiência em uma página que funcionasse bem no celular e no computador.</p>
+      <details name="tecnologias-projeto" open>
+        <summary>HTML · Estrutura da página</summary>
+        <p>Organizei o conteúdo em seções semânticas com âncoras, títulos e campos de formulário com rótulos.</p>
+      </details>
+      <details name="tecnologias-projeto">
+        <summary>CSS · Layout e identidade visual</summary>
+        <p>Usei Grid e Flexbox para adaptar o layout à tela. A paleta e os traços em SVG dão identidade visual à página.</p>
+      </details>
+      <details name="tecnologias-projeto">
+        <summary>JavaScript · Interações</summary>
+        <p>Combinei a busca por texto com o filtro por categoria e implementei um menu móvel operável pelo teclado.</p>
+      </details>
+    </dialog>
+  `);
+
+  const abrir = projeto.querySelector(".abrir-estudo");
+  const estudo = document.querySelector(".estudo-projeto");
+
+  abrir.addEventListener("click", () => {
+    abrir.focus({ preventScroll: true });
+    estudo.showModal();
+  });
+})();
+
+// Experiências e formação em uma linha do tempo expansível.
+document.querySelectorAll("#trajetoria :is(.timeline, .linha-do-tempo) li").forEach((item, indice) => {
+  const conteudo = item.querySelector("div");
+  const titulo = conteudo.querySelector("h3");
+  const detalhe = document.createElement("details");
+  const resumo = document.createElement("summary");
+
+  detalhe.name = "itens-trajetoria";
+  detalhe.open = indice === 0;
+  resumo.textContent = titulo.textContent;
+
+  titulo.remove();
+  detalhe.append(resumo, ...conteudo.childNodes);
+  conteudo.replaceWith(detalhe);
+});
